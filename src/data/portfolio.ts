@@ -72,6 +72,7 @@ export type Project = {
   title: string;
   description: string;
   tech: string[];
+  image?: string;
   githubUrl?: string;
   docUrl?: string;
 };
@@ -82,6 +83,7 @@ export const projects: Project[] = [
     description:
       "An e-commerce storefront for a Lampung banana chips brand, with product browsing by category (Best Seller, New Product, All Product, Reseller Product), product search and sorting, a shopping cart with live quantity and price totals, and a simple checkout flow.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    image: "/images/projects/gallery-keripik-pisang.jpg",
   },
 ];
 

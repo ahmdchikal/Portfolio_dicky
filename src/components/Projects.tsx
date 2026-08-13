@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { projects } from "@/data/portfolio";
@@ -12,29 +13,41 @@ export default function Projects() {
 
         <div
           className={`mt-10 grid gap-6 text-left ${
-            projects.length === 1 ? "mx-auto max-w-xl" : "sm:grid-cols-2"
+            projects.length === 1 ? "mx-auto max-w-3xl" : "sm:grid-cols-2"
           }`}
         >
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={i * 100}>
-              <div className="card group flex h-full flex-col overflow-hidden rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
-                <div className="flex h-32 flex-col justify-between bg-hero-1 p-4">
-                  <div className="flex gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+              <div className="card group flex h-full flex-col overflow-hidden rounded-2xl shadow-sm transition-transform hover:-translate-y-1 sm:flex-row">
+                {project.image ? (
+                  <div className="relative h-72 w-full shrink-0 bg-hero-1 sm:h-auto sm:w-64">
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 256px"
+                      className="object-cover object-top"
+                    />
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tech.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded bg-white/10 px-2 py-1 text-[10px] font-medium text-white/70"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                ) : (
+                  <div className="flex h-32 shrink-0 flex-col justify-between bg-hero-1 p-4 sm:h-auto sm:w-64">
+                    <div className="flex gap-1.5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tech.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded bg-white/10 px-2 py-1 text-[10px] font-medium text-white/70"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="font-heading text-lg font-bold text-foreground transition-colors group-hover:text-accent">
