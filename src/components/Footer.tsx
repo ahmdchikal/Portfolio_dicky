@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { profile } from "@/data/portfolio";
 
 const initials = profile.name
@@ -12,8 +13,20 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center justify-between gap-6 pb-6 sm:flex-row">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-accent/40 to-hero-2 text-sm font-bold text-white">
-              {initials}
+            <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/15 text-sm font-bold text-white">
+              {profile.photoUrl ? (
+                <Image
+                  src={profile.photoUrl}
+                  alt={profile.name}
+                  fill
+                  sizes="44px"
+                  className="object-cover"
+                />
+              ) : (
+                <span className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent/40 to-hero-2">
+                  {initials}
+                </span>
+              )}
             </span>
             <div>
               <p className="font-heading text-sm font-bold text-foreground">

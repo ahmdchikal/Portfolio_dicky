@@ -6,6 +6,7 @@ export const profile = {
     "Bachelor of Informatics",
   ],
   location: "Bandar Lampung, Indonesia",
+  photoUrl: "/images/profile.jpg",
   // Add a hosted PDF link to show a "Download CV" button in the hero instead of "Get In Touch".
   cvUrl: "",
   bio: [

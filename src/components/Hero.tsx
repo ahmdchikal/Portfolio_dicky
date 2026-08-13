@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { contact, profile } from "@/data/portfolio";
 import { DownloadIcon, MailIcon, WhatsAppIcon, LinkedInIcon, ArrowRightIcon } from "@/components/icons";
 
@@ -23,10 +24,23 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-10 px-6 sm:flex-row sm:items-center">
-        <div className="flex h-40 w-40 shrink-0 items-center justify-center rounded-full border-4 border-white/15 bg-gradient-to-br from-accent/40 to-hero-2 shadow-xl sm:h-44 sm:w-44">
-          <span className="font-heading text-5xl font-bold text-white">
-            {initials}
-          </span>
+        <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full border-4 border-white/15 shadow-xl sm:h-44 sm:w-44">
+          {profile.photoUrl ? (
+            <Image
+              src={profile.photoUrl}
+              alt={profile.name}
+              fill
+              sizes="176px"
+              priority
+              className="object-cover"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent/40 to-hero-2">
+              <span className="font-heading text-5xl font-bold text-white">
+                {initials}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="text-center sm:text-left">
