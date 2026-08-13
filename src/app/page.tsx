@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
@@ -19,6 +20,7 @@ export default function Home() {
         <Projects />
         <Experience />
         <Education />
+        <Certificates />
         <Contact />
       </main>
       <Footer />

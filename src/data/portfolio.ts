@@ -127,3 +127,49 @@ export const education = [
       "Relevant coursework included computer networks, database systems, programming, information systems, IT support, and computer security.",
   },
 ];
+
+export type Certificate = {
+  title: string;
+  issuer: string;
+  date: string;
+  image: string;
+  pdf: string;
+};
+
+export const certificates: Certificate[] = [
+  {
+    title: "Certificate of Competency for Computer Network and Troubleshooting",
+    issuer: "Universitas Teknokrat Indonesia",
+    date: "May 2025",
+    image: "/certificates/computer-network-troubleshooting.jpg",
+    pdf: "/certificates/computer-network-troubleshooting.pdf",
+  },
+  {
+    title: "Certificate of Competency for Graphic Design",
+    issuer: "Universitas Teknokrat Indonesia",
+    date: "July 2025",
+    image: "/certificates/graphic-design.jpg",
+    pdf: "/certificates/graphic-design.pdf",
+  },
+  {
+    title: "Certificate of Competency for Office Administration",
+    issuer: "Universitas Teknokrat Indonesia",
+    date: "March 2025",
+    image: "/certificates/office-administration.jpg",
+    pdf: "/certificates/office-administration.pdf",
+  },
+  {
+    title: "2nd Place, Web Programming II — Teknokrat Academic Expo 2024",
+    issuer: "Universitas Teknokrat Indonesia",
+    date: "January 2024",
+    image: "/certificates/academic-expo-2024.jpg",
+    pdf: "/certificates/academic-expo-2024.pdf",
+  },
+  {
+    title: 'Webinar Career Series — "RPA Role in the Future of Work"',
+    issuer: "Teknokrat Career and Training Center",
+    date: "December 2022",
+    image: "/certificates/webinar-career-series.jpg",
+    pdf: "/certificates/webinar-career-series.pdf",
+  },
+];
