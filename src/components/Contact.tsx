@@ -3,10 +3,10 @@ import { contact } from "@/data/portfolio";
 import { InstagramIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from "@/components/icons";
 
 const links = [
-  { label: "WhatsApp", href: contact.whatsappLink, Icon: WhatsAppIcon },
-  { label: "Email", href: `mailto:${contact.email}`, Icon: MailIcon },
-  { label: "LinkedIn", href: contact.linkedin, Icon: LinkedInIcon },
-  { label: "Instagram", href: contact.instagram, Icon: InstagramIcon },
+  { label: "WhatsApp", value: contact.whatsapp, href: contact.whatsappLink, Icon: WhatsAppIcon },
+  { label: "Email", value: contact.email, href: `mailto:${contact.email}`, Icon: MailIcon },
+  { label: "LinkedIn", value: "achmad-dicky-adi-prastian", href: contact.linkedin, Icon: LinkedInIcon },
+  { label: "Instagram", value: "@achmad.dickyy", href: contact.instagram, Icon: InstagramIcon },
 ];
 
 export default function Contact() {
@@ -23,17 +23,26 @@ export default function Contact() {
               Technical Support. Don&apos;t hesitate to reach out!
             </p>
 
-            <div className="mt-8 flex items-center justify-center gap-4">
-              {links.map(({ label, href, Icon }) => (
+            <div className="mt-8 grid gap-3 text-left sm:grid-cols-2">
+              {links.map(({ label, value, href, Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  aria-label={label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-accent-soft text-accent transition-transform hover:scale-110"
+                  className="flex items-center gap-3 rounded-xl bg-background px-4 py-3 transition-transform hover:-translate-y-0.5"
                 >
-                  <Icon className="h-5 w-5" />
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs uppercase tracking-wide text-muted">
+                      {label}
+                    </span>
+                    <span className="block truncate text-sm font-medium text-foreground">
+                      {value}
+                    </span>
+                  </span>
                 </a>
               ))}
             </div>
