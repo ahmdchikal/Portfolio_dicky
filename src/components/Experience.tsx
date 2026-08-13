@@ -1,46 +1,32 @@
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import { experience } from "@/data/portfolio";
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="border-t border-border bg-background-secondary/40 py-24"
-    >
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="experience" className="bg-background py-20">
+      <div className="mx-auto max-w-6xl px-6 text-center">
         <Reveal>
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-            Experience
-          </p>
-          <h2 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">
-            Where I&apos;ve worked
-          </h2>
+          <SectionHeading>Experience</SectionHeading>
         </Reveal>
 
-        <div className="mt-12 space-y-6">
+        <div className="mt-10 grid gap-6 text-left sm:grid-cols-2">
           {experience.map((job, i) => (
             <Reveal key={job.company} delay={i * 100}>
-              <div className="relative rounded-2xl border border-border bg-background p-6 pl-8 sm:p-8 sm:pl-10">
-                <div className="absolute left-0 top-8 h-3 w-3 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_0_4px_var(--color-accent-soft)]" />
-
-                <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-                  <div>
-                    <h3 className="font-heading text-lg font-semibold text-foreground">
-                      {job.role}
-                    </h3>
-                    <p className="text-sm text-accent">{job.company}</p>
-                  </div>
-                  <span className="w-fit rounded-full border border-border px-3 py-1 text-xs text-muted">
+              <div className="card h-full rounded-2xl p-6 shadow-sm sm:p-7">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="font-heading text-lg font-bold text-accent">
+                    {job.role}
+                  </h3>
+                  <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
                     {job.period}
                   </span>
                 </div>
+                <p className="mt-1 text-sm font-medium text-muted">{job.company}</p>
 
                 <ul className="mt-4 space-y-2">
                   {job.points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-start gap-2 text-sm leading-relaxed text-muted"
-                    >
+                    <li key={point} className="flex items-start gap-2 text-sm leading-relaxed text-muted">
                       <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                       {point}
                     </li>

@@ -1,68 +1,94 @@
 import { contact, profile } from "@/data/portfolio";
+import { DownloadIcon, MailIcon, WhatsAppIcon, LinkedInIcon, ArrowRightIcon } from "@/components/icons";
+
+const initials = profile.name
+  .split(" ")
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join("");
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="bg-grid relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="relative overflow-hidden bg-hero-1 pb-16 pt-32 sm:pb-20 sm:pt-36"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="animate-float absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/20 blur-[110px]" />
-      </div>
+      <div
+        className="pointer-events-none absolute inset-0 bg-hero-2"
+        style={{ clipPath: "polygon(58% 0, 100% 0, 100% 100%, 76% 100%)" }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40 bg-hero-2"
+        style={{ clipPath: "polygon(52% 0, 56% 0, 74% 100%, 70% 100%)" }}
+      />
 
-      <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-6 py-16 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-        <div>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-background-secondary px-4 py-1.5 text-sm text-accent">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
-            Open to IT Support opportunities
-          </p>
-
-          <h1 className="font-heading text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Hi, I&apos;m{" "}
-            <span className="text-gradient">{profile.name}</span>
-          </h1>
-
-          <p className="mt-5 text-lg font-medium text-muted sm:text-xl">
-            {profile.titles.join(" · ")}
-          </p>
-
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            {profile.bio[0]}
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition-transform hover:scale-105"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              Get In Touch
-            </a>
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4 text-sm text-muted">
-            <span>📍 {profile.location}</span>
-            <span className="hidden sm:inline">·</span>
-            <a
-              href={`mailto:${contact.email}`}
-              className="transition-colors hover:text-accent"
-            >
-              {contact.email}
-            </a>
-          </div>
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-10 px-6 sm:flex-row sm:items-center">
+        <div className="flex h-40 w-40 shrink-0 items-center justify-center rounded-full border-4 border-white/15 bg-gradient-to-br from-accent/40 to-hero-2 shadow-xl sm:h-44 sm:w-44">
+          <span className="font-heading text-5xl font-bold text-white">
+            {initials}
+          </span>
         </div>
 
-        <div className="relative mx-auto hidden aspect-square w-full max-w-sm md:block">
-          <div className="absolute inset-0 rounded-[2rem] border border-border bg-background-secondary/60 backdrop-blur-sm" />
-          <div className="absolute inset-6 flex items-center justify-center rounded-3xl border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent">
-            <span className="font-heading text-7xl font-bold text-gradient">
-              AD
-            </span>
+        <div className="text-center sm:text-left">
+          <h1 className="font-heading text-4xl font-extrabold text-white sm:text-5xl">
+            {profile.name}
+          </h1>
+
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+            {profile.titles.slice(0, 2).map((title, i) => (
+              <span key={title} className="flex items-center gap-3">
+                {i > 0 && <span className="hidden h-5 w-px bg-accent sm:block" />}
+                <span className="text-lg text-white/70">{title}</span>
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-3 sm:justify-start">
+            <a
+              href={`mailto:${contact.email}`}
+              aria-label="Email"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            >
+              <MailIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={contact.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            >
+              <LinkedInIcon className="h-4 w-4" />
+            </a>
+
+            {profile.cvUrl ? (
+              <a
+                href={profile.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
+              >
+                <DownloadIcon className="h-4 w-4" />
+                Download CV
+              </a>
+            ) : (
+              <a
+                href="#contact"
+                className="ml-1 flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
+              >
+                Get In Touch
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+            )}
           </div>
         </div>
       </div>

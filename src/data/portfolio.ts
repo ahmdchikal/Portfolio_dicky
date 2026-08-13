@@ -6,6 +6,8 @@ export const profile = {
     "Bachelor of Informatics",
   ],
   location: "Bandar Lampung, Indonesia",
+  // Add a hosted PDF link to show a "Download CV" button in the hero instead of "Get In Touch".
+  cvUrl: "",
   bio: [
     "I am a Bachelor of Informatics graduate from Universitas Teknokrat Indonesia with a strong interest in IT Support and Technical Support. I am skilled in software installation, hardware and software troubleshooting, basic network configuration, and providing technical assistance to users.",
     "I have strong analytical and problem-solving abilities, pay close attention to detail, and can communicate technical solutions clearly. I am committed to continuously learning and improving my skills to keep up with developments in information technology.",
@@ -21,50 +23,49 @@ export const contact = {
   location: "Bandar Lampung, Indonesia",
 };
 
-export const skillGroups = [
+export type Skill = { name: string; level: number };
+
+export const skillGroups: { title: string; skills: Skill[] }[] = [
   {
     title: "Hardware & Maintenance",
     skills: [
-      "Hardware & Software Troubleshooting",
-      "Windows Installation & Configuration",
-      "Computer & Laptop Maintenance",
-      "Application & Driver Installation",
-      "Printer Installation & Troubleshooting",
-      "IT Asset Inventory",
+      { name: "Hardware & Software Troubleshooting", level: 90 },
+      { name: "Windows Installation & Configuration", level: 90 },
+      { name: "Computer & Laptop Maintenance", level: 88 },
+      { name: "Printer Installation & Troubleshooting", level: 85 },
+      { name: "IT Asset Inventory", level: 80 },
     ],
   },
   {
     title: "Networking",
     skills: [
-      "LAN & Wi-Fi Networking",
-      "TCP/IP, DNS, DHCP & IP Addressing",
-      "Router & Access Point Configuration",
-      "Basic Linux Administration",
-      "Basic Cybersecurity",
+      { name: "LAN & Wi-Fi Networking", level: 85 },
+      { name: "TCP/IP, DNS, DHCP & IP Addressing", level: 82 },
+      { name: "Router & Access Point Configuration", level: 80 },
+      { name: "Basic Linux Administration", level: 65 },
+      { name: "Basic Cybersecurity", level: 65 },
     ],
   },
   {
     title: "Support & Tools",
     skills: [
-      "Microsoft Office & Microsoft 365",
-      "Remote Technical Support",
-      "Help Desk Support",
-      "Data Backup & Recovery",
+      { name: "Microsoft Office & Microsoft 365", level: 90 },
+      { name: "Remote Technical Support", level: 85 },
+      { name: "Help Desk Support", level: 85 },
+      { name: "Data Backup & Recovery", level: 78 },
     ],
   },
   {
     title: "Development",
     skills: [
-      "Basic HTML, CSS & JavaScript",
-      "Basic MySQL",
-      "Git & GitHub",
+      { name: "Basic HTML, CSS & JavaScript", level: 65 },
+      { name: "Basic MySQL", level: 60 },
+      { name: "Git & GitHub", level: 60 },
     ],
   },
-  {
-    title: "Soft Skills",
-    skills: ["Communication", "Teamwork", "Problem-Solving"],
-  },
 ];
+
+export const softSkills = ["Communication", "Teamwork", "Problem-Solving"];
 
 export type Project = {
   title: string;
@@ -120,6 +121,7 @@ export const education = [
   {
     degree: "Bachelor of Informatics",
     school: "Universitas Teknokrat Indonesia",
+    faculty: "Faculty of Engineering and Computer Science",
     period: "",
     description:
       "Relevant coursework included computer networks, database systems, programming, information systems, IT support, and computer security.",

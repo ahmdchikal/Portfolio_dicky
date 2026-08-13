@@ -1,39 +1,49 @@
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 import { education } from "@/data/portfolio";
+import { BuildingIcon, CalendarIcon, GraduationCapIcon } from "@/components/icons";
 
 export default function Education() {
   return (
-    <section id="education" className="border-t border-border py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="education" className="bg-background py-20">
+      <div className="mx-auto max-w-4xl px-6 text-center">
         <Reveal>
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-            Education
-          </p>
-          <h2 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">
-            Academic background
-          </h2>
+          <SectionHeading>Education</SectionHeading>
         </Reveal>
 
-        <div className="mt-12 space-y-6">
+        <div className="mt-10 space-y-6">
           {education.map((edu, i) => (
             <Reveal key={edu.degree} delay={i * 100}>
-              <div className="rounded-2xl border border-border bg-background-secondary p-6 sm:p-8">
-                <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-                  <div>
-                    <h3 className="font-heading text-lg font-semibold text-foreground">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-sm text-accent">{edu.school}</p>
-                  </div>
+              <div className="card flex flex-col items-center gap-4 rounded-2xl p-8 text-center shadow-sm sm:p-10">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-hero-1 text-white">
+                  <GraduationCapIcon className="h-6 w-6" />
+                </div>
+
+                <div>
+                  <h3 className="font-heading text-xl font-bold text-foreground">
+                    {edu.degree}
+                  </h3>
+                  <p className="mt-1 text-muted">{edu.school}</p>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-3">
                   {edu.period && (
-                    <span className="w-fit rounded-full border border-border px-3 py-1 text-xs text-muted">
-                      {edu.period}
+                    <span className="flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+                      <CalendarIcon /> {edu.period}
+                    </span>
+                  )}
+                  {edu.faculty && (
+                    <span className="flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+                      <BuildingIcon /> {edu.faculty}
                     </span>
                   )}
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-muted">
-                  {edu.description}
-                </p>
+
+                {edu.description && (
+                  <p className="max-w-xl text-sm leading-relaxed text-muted">
+                    {edu.description}
+                  </p>
+                )}
               </div>
             </Reveal>
           ))}

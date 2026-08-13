@@ -1,25 +1,43 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
+  --background: #f3f5f9;
+  --surface: #ffffff;
+  --foreground: #111827;
+  --muted: #5b6472;
+  --accent: #ef4565;
+  --accent-soft: rgba(239, 69, 101, 0.12);
+  --border: rgba(17, 24, 39, 0.08);
+  --hero-1: #10162b;
+  --hero-2: #1c2444;
+}
+
+.dark {
   --background: #0b1120;
-  --background-secondary: #111827;
+  --surface: #131a2e;
   --foreground: #f8fafc;
-  --muted: #94a3b8;
-  --accent: #38bdf8;
-  --accent-soft: rgba(56, 189, 248, 0.12);
-  --border: rgba(148, 163, 184, 0.16);
+  --muted: #97a1b3;
+  --accent: #ef4565;
+  --accent-soft: rgba(239, 69, 101, 0.18);
+  --border: rgba(148, 163, 184, 0.14);
+  --hero-1: #10162b;
+  --hero-2: #1c2444;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-background-secondary: var(--background-secondary);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-border: var(--border);
+  --color-hero-1: var(--hero-1);
+  --color-hero-2: var(--hero-2);
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-poppins);
+  --font-heading: var(--font-baloo);
 }
 
 html {
@@ -30,31 +48,40 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--background);
+  color: #fff;
 }
 
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.section-heading {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-heading::after {
+  content: "";
+  width: 3rem;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent);
 }
 
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -67,19 +94,15 @@ body {
 }
 
 .reveal.in-view {
-  animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
+@keyframes bar-fill {
+  from {
+    width: 0%;
   }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.skill-bar-fill {
+  animation: bar-fill 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
