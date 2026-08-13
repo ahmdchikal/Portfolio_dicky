@@ -78,28 +78,10 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "IT Help Desk Ticketing System",
+    title: "Gallery Keripik Pisang (E-Commerce)",
     description:
-      "A web-based system designed to record, manage, and monitor technical support requests. The system includes issue categories, priority levels, ticket statuses, and troubleshooting history.",
+      "An e-commerce storefront for a Lampung banana chips brand, with product browsing by category (Best Seller, New Product, All Product, Reseller Product), product search and sorting, a shopping cart with live quantity and price totals, and a simple checkout flow.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-  },
-  {
-    title: "IT Asset Inventory System",
-    description:
-      "An application designed to manage technology assets such as computers, laptops, printers, routers, and other IT equipment. The system records equipment conditions, locations, assigned users, and maintenance schedules.",
-    tech: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
-  },
-  {
-    title: "Small Office Network Setup",
-    description:
-      "A small-office network simulation covering IP address allocation, router configuration, LAN and Wi-Fi connectivity, and communication testing between connected devices.",
-    tech: ["Cisco Packet Tracer", "TCP/IP", "DHCP", "DNS", "LAN"],
-  },
-  {
-    title: "Computer Maintenance & Troubleshooting",
-    description:
-      "A technical documentation project covering computer inspection and maintenance, operating system installation, driver installation, system optimization, hardware cleaning, and hardware or software troubleshooting.",
-    tech: ["Windows", "BIOS/UEFI", "Driver Tools", "Diagnostic Tools"],
   },
 ];
 

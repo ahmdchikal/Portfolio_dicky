@@ -10,7 +10,11 @@ export default function Projects() {
           <SectionHeading>Projects</SectionHeading>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 text-left sm:grid-cols-2">
+        <div
+          className={`mt-10 grid gap-6 text-left ${
+            projects.length === 1 ? "mx-auto max-w-xl" : "sm:grid-cols-2"
+          }`}
+        >
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={i * 100}>
               <div className="card group flex h-full flex-col overflow-hidden rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
