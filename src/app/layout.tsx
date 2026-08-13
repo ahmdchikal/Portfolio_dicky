@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Baloo_2 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
+const inter = localFont({
+  src: "./fonts/inter.woff2",
   variable: "--font-inter",
-  subsets: ["latin"],
+  weight: "100 900",
+  display: "swap",
 });
 
-const baloo = Baloo_2({
+const baloo = localFont({
+  src: "./fonts/baloo2.woff2",
   variable: "--font-baloo",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: "500 800",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
